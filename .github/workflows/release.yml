@@ -35,6 +35,9 @@ jobs:
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
 
+      - name: Install Tauri CLI (via Cargo)
+        run: cargo install tauri-cli --version "^2"
+
       - name: Install Linux dependencies
         if: matrix.platform == 'linux'
         run: |
