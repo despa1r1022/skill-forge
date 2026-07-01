@@ -1,4 +1,4 @@
-name: Build
+name: CI Check
 
 on:
   push:
@@ -7,49 +7,16 @@ on:
     branches: [main]
 
 jobs:
-  build:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: macos-latest
-            target: aarch64-apple-darwin
-            artifact: skill-forge-darwin
-          - os: ubuntu-latest
-            target: x86_64-unknown-linux-gnu
-            artifact: skill-forge-linux
-          - os: windows-latest
-            target: x86_64-pc-windows-msvc
-            artifact: skill-forge-windows
-
-    runs-on: ${{ matrix.os }}
+  check-rust:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
-
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: Install dependencies (Ubuntu)
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
-
-      - name: Install npm dependencies
-        run: npm ci
-
-      - name: Build Tauri app
-        uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tagName: v__VERSION__
-          releaseName: 'SkillForge v__VERSION__'
-          releaseBody: 'See the assets to download this version and install.'
-          releaseDraft: true
-          prerelease: false
+      - run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev
+      - run: npm ci
+      - run: cargo check
+      - run: npx tsc --noEmit
+      - run: npx vite build
