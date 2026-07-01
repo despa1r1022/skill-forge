@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: 18
       - run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev
-      - run: npm install
+      - run: |
+          rm -rf node_modules package-lock.json
+          npm install
       - run: cargo check
       - run: npm run build
