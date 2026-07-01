@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface MarkdownPreviewProps {
   content: string;
@@ -6,63 +7,21 @@ interface MarkdownPreviewProps {
 
 export function MarkdownPreview({ content }: MarkdownPreviewProps) {
   if (!content) {
-    return <p className="text-sm text-slate-400 italic">No content</p>;
+    return (
+      <div className="flex items-center justify-center py-16 text-slate-400">
+        <div className="text-center">
+          <svg className="w-12 h-12 mx-auto mb-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <p className="text-sm">暂无内容</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="prose prose-sm prose-slate max-w-none">
-      <ReactMarkdown
-        components={{
-          h1: ({ children }) => (
-            <h1 className="text-xl font-bold text-slate-800 mt-6 mb-3 pb-2 border-b border-slate-200">
-              {children}
-            </h1>
-          ),
-          h2: ({ children }) => (
-            <h2 className="text-lg font-semibold text-slate-700 mt-5 mb-2">
-              {children}
-            </h2>
-          ),
-          h3: ({ children }) => (
-            <h3 className="text-base font-medium text-slate-600 mt-4 mb-1">
-              {children}
-            </h3>
-          ),
-          p: ({ children }) => (
-            <p className="text-sm text-slate-600 leading-relaxed my-2">{children}</p>
-          ),
-          code: ({ children, className }) => {
-            const isInline = !className;
-            return isInline ? (
-              <code className="px-1 py-0.5 bg-slate-100 text-red-500 rounded text-xs font-mono">
-                {children}
-              </code>
-            ) : (
-              <pre className="bg-slate-900 text-slate-100 p-3 rounded-md overflow-x-auto text-xs">
-                <code className={className}>{children}</code>
-              </pre>
-            );
-          },
-          ul: ({ children }) => (
-            <ul className="list-disc list-inside text-sm text-slate-600 space-y-1 my-2">
-              {children}
-            </ul>
-          ),
-          ol: ({ children }) => (
-            <ol className="list-decimal list-inside text-sm text-slate-600 space-y-1 my-2">
-              {children}
-            </ol>
-          ),
-          blockquote: ({ children }) => (
-            <blockquote className="border-l-3 border-amber-400 bg-amber-50 pl-4 py-2 my-3 text-sm text-amber-800 rounded-r">
-              {children}
-            </blockquote>
-          ),
-          hr: () => <hr className="my-4 border-slate-200" />,
-        }}
-      >
-        {content}
-      </ReactMarkdown>
-    </div>
+    <article className="prose prose-slate max-w-none prose-headings:scroll-mt-28 prose-headings:font-semibold prose-h1:text-2xl prose-h1:mt-8 prose-h1:mb-4 prose-h1:pb-2 prose-h1:border-b prose-h1:border-slate-200 prose-h2:text-xl prose-h2:mt-6 prose-h2:mb-3 prose-h3:text-lg prose-h3:mt-5 prose-h3:mb-2 prose-p:text-sm prose-p:leading-7 prose-p:text-slate-600 prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-800 prose-code:text-amber-700 prose-code:bg-amber-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:font-normal prose-code:before:content-none prose-code:after:content-none prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-pre:shadow-inner prose-pre:rounded-xl prose-img:rounded-lg prose-img:shadow-md prose-blockquote:border-l-indigo-400 prose-blockquote:bg-indigo-50/50 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:text-slate-600 prose-ul:my-2 prose-ol:my-2 prose-li:my-0.5 prose-li:text-sm prose-li:text-slate-600 prose-hr:my-8 prose-hr:border-slate-200 prose-table:text-sm prose-th:bg-slate-50 prose-th:px-4 prose-th:py-2 prose-th:text-xs prose-th:font-semibold prose-td:px-4 prose-td:py-2 prose-td:text-sm">
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+    </article>
   );
 }
