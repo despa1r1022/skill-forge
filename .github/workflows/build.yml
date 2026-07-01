@@ -17,6 +17,6 @@ jobs:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
       - run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev
-      - run: npm install --registry https://registry.npmjs.org
+      - run: npm install
       - run: cargo check
       - run: npm run build
