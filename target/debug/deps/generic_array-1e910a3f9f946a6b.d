@@ -1,0 +1,11 @@
+/Users/lys/Desktop/skill-forge/target/debug/deps/generic_array-1e910a3f9f946a6b.d: /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/lib.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/hex.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/impls.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/arr.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/functional.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/iter.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/sequence.rs
+
+/Users/lys/Desktop/skill-forge/target/debug/deps/libgeneric_array-1e910a3f9f946a6b.rmeta: /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/lib.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/hex.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/impls.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/arr.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/functional.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/iter.rs /Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/sequence.rs
+
+/Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/lib.rs:
+/Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/hex.rs:
+/Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/impls.rs:
+/Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/arr.rs:
+/Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/functional.rs:
+/Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/iter.rs:
+/Users/lys/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/generic-array-0.14.7/src/sequence.rs:

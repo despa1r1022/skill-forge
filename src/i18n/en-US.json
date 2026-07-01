@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "SkillForge - AI Skills Manager",
+    "description": "Cross-tool AI Skills & Rules Manager"
+  },
+  "sidebar": {
+    "tools": "Tools",
+    "skills": "Skills",
+    "newSkill": "+ New",
+    "search": "Search skills...",
+    "noSkills": "No skills found",
+    "noMatch": "No matching skills",
+    "loading": "Loading..."
+  },
+  "skill": {
+    "detail": "Skill Details",
+    "edit": "Edit",
+    "create": "Create Skill",
+    "delete": "Delete",
+    "enable": "Enable",
+    "disable": "Disable",
+    "export": "Export",
+    "import": "Import",
+    "copyTo": "Copy to...",
+    "name": "Name",
+    "description": "Description",
+    "version": "Version",
+    "format": "Format",
+    "tool": "Tool",
+    "path": "Path",
+    "metadata": "Metadata",
+    "content": "Content Preview",
+    "structure": "Directory Structure",
+    "source": "Source",
+    "requiredBins": "Required Binaries",
+    "requiredEnv": "Required Env Vars",
+    "requiredSiblings": "Dependent Skills"
+  },
+  "editor": {
+    "editing": "Editing",
+    "save": "Save",
+    "saving": "Saving...",
+    "saved": "Saved!",
+    "preview": "Preview",
+    "cancel": "Cancel"
+  },
+  "wizard": {
+    "title": "Create New Skill",
+    "nameLabel": "Skill Name *",
+    "nameHint": "Lowercase, hyphens only (e.g. \"code-review\")",
+    "descLabel": "Description *",
+    "versionLabel": "Version (optional)",
+    "templateLabel": "Template",
+    "templateMinimal": "Minimal\nSKILL.md only",
+    "templateRefs": "+ References\nsubdirectory",
+    "templateScripts": "+ Scripts\nsubdirectory",
+    "create": "Create Skill",
+    "creating": "Creating...",
+    "cancel": "Cancel"
+  },
+  "dialog": {
+    "deleteTitle": "Delete Skill",
+    "deleteMessage": "Are you sure you want to delete \"{{name}}\"? This cannot be undone.",
+    "confirm": "Confirm",
+    "deleteBtn": "Delete",
+    "cancel": "Cancel"
+  },
+  "copyTool": {
+    "title": "Copy to Other Tool",
+    "selectTarget": "Select target tool",
+    "copy": "Copy",
+    "copying": "Copying..."
+  }
+}

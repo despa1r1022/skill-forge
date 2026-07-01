@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "SkillForge - AI Skills Manager",
+    "description": "跨工具 AI Skills/Rules 管理器"
+  },
+  "sidebar": {
+    "tools": "工具",
+    "skills": "Skills",
+    "newSkill": "+ 新建",
+    "search": "搜索技能...",
+    "noSkills": "暂无技能",
+    "noMatch": "无匹配技能",
+    "loading": "加载中..."
+  },
+  "skill": {
+    "detail": "技能详情",
+    "edit": "编辑",
+    "create": "新建技能",
+    "delete": "删除",
+    "enable": "启用",
+    "disable": "禁用",
+    "export": "导出",
+    "import": "导入",
+    "copyTo": "复制到...",
+    "name": "名称",
+    "description": "描述",
+    "version": "版本",
+    "format": "格式",
+    "tool": "工具",
+    "path": "路径",
+    "metadata": "元数据",
+    "content": "内容预览",
+    "structure": "目录结构",
+    "source": "来源",
+    "requiredBins": "需要二进制",
+    "requiredEnv": "需要环境变量",
+    "requiredSiblings": "依赖技能"
+  },
+  "editor": {
+    "editing": "编辑中",
+    "save": "保存",
+    "saving": "保存中...",
+    "saved": "已保存！",
+    "preview": "预览",
+    "cancel": "取消"
+  },
+  "wizard": {
+    "title": "新建技能",
+    "nameLabel": "技能名称 *",
+    "nameHint": "小写字母 + 连字符（如 \"code-review\"）",
+    "descLabel": "描述 *",
+    "versionLabel": "版本（可选）",
+    "templateLabel": "模板",
+    "templateMinimal": "基础\n仅 SKILL.md",
+    "templateRefs": "+ References\n子目录",
+    "templateScripts": "+ Scripts\n子目录",
+    "create": "创建技能",
+    "creating": "创建中...",
+    "cancel": "取消"
+  },
+  "dialog": {
+    "deleteTitle": "删除技能",
+    "deleteMessage": "确定要删除 \"{{name}}\" 吗？此操作无法撤销。",
+    "confirm": "确认",
+    "deleteBtn": "删除",
+    "cancel": "取消"
+  },
+  "copyTool": {
+    "title": "复制到其他工具",
+    "selectTarget": "选择目标工具",
+    "copy": "复制",
+    "copying": "复制中..."
+  }
+}
