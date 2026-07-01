@@ -1,4 +1,3 @@
-import { useNavigate, useParams } from "react-router-dom";
 import { useTools } from "../../hooks/useTools";
 import { useSkills } from "../../hooks/useSkills";
 import { SkillCard } from "./SkillCard";
