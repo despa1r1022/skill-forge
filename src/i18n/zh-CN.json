@@ -6,7 +6,7 @@
   "sidebar": {
     "tools": "工具",
     "skills": "Skills",
-    "newSkill": "+ 新建",
+    "newSkill": "新建",
     "search": "搜索技能...",
     "noSkills": "暂无技能",
     "noMatch": "无匹配技能",

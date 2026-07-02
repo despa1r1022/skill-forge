@@ -7,6 +7,7 @@ mod toggle;
 mod copy;
 mod export_import;
 mod tools;
+mod files;
 
 pub use list::*;
 pub use detail::*;
@@ -17,3 +18,4 @@ pub use toggle::*;
 pub use copy::*;
 pub use export_import::*;
 pub use tools::*;
+pub use files::*;

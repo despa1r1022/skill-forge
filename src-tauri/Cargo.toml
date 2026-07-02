@@ -21,3 +21,4 @@ tool-core = { path = "../crates/tool-core" }
 skill-core = { path = "../crates/skill-core" }
 skill-fs = { path = "../crates/skill-fs" }
 skill-pack = { path = "../crates/skill-pack" }
+log = "0.4"

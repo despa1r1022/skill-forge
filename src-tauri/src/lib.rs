@@ -20,6 +20,12 @@ pub fn run() {
             copy_skill,
             export_skill,
             import_skill,
+            create_file,
+            create_directory,
+            save_file_content,
+            delete_file,
+            read_file_content,
+            import_local_skill,
         ])
         .run(tauri::generate_context!())
         .expect("error while running SkillForge");

@@ -36,4 +36,23 @@ export const api = {
 
   importSkill: (toolId: string, zipPath: string): Promise<void> =>
     invoke("import_skill", { toolId, zipPath }),
+
+  // File operations
+  createFile: (skillPath: string, subdir: string, filename: string): Promise<void> =>
+    invoke("create_file", { skillPath, subdir, filename }),
+
+  createDirectory: (skillPath: string, dirname: string): Promise<void> =>
+    invoke("create_directory", { skillPath, dirname }),
+
+  saveFileContent: (path: string, content: string): Promise<void> =>
+    invoke("save_file_content", { path, content }),
+
+  deleteFile: (path: string): Promise<void> =>
+    invoke("delete_file", { path }),
+
+  readFileContent: (path: string): Promise<string> =>
+    invoke("read_file_content", { path }),
+
+  importLocalSkill: (toolId: string, sourcePath: string): Promise<string> =>
+    invoke("import_local_skill", { toolId, sourcePath }),
 };

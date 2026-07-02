@@ -1,5 +1,7 @@
-use skill_core::model::{CreateRequest, SkillEntry, SkillMeta};
+use skill_core::model::{CreateRequest, SkillEntry, SkillMeta, TemplateType};
 use skill_core::validate;
+use std::fs;
+use std::path::Path;
 use tool_core::registry;
 
 fn map_err(e: impl std::fmt::Display) -> String {
@@ -46,11 +48,53 @@ pub fn create_skill(tool_id: String, req: CreateRequest) -> Result<SkillEntry, S
 
     skill_fs::writer::create_skill_dir(&dir_str, &req.name, &content)?;
 
+    // Create custom subdirectories
+    let skill_path = format!("{}/{}", dir_str, req.name);
+
+    // First handle template-based subdirs
+    if let Some(template) = &req.template {
+        match template {
+            TemplateType::WithReferences => {
+                fs::create_dir_all(format!("{}/references", skill_path))
+                    .map_err(|e| format!("Failed to create references dir: {}", e))?;
+            }
+            TemplateType::WithScripts => {
+                fs::create_dir_all(format!("{}/references", skill_path))
+                    .map_err(|e| format!("Failed to create references dir: {}", e))?;
+                fs::create_dir_all(format!("{}/scripts", skill_path))
+                    .map_err(|e| format!("Failed to create scripts dir: {}", e))?;
+            }
+            TemplateType::Minimal => {}
+        }
+    }
+
+    // Then create custom subdirectories and files
+    if let Some(dirs) = &req.subdirs {
+        for dir in dirs {
+            let target = format!("{}/{}", skill_path, dir);
+            fs::create_dir_all(&target)
+                .map_err(|e| format!("Failed to create '{}' dir: {}", dir, e))?;
+        }
+    }
+
+    // Create files in subdirectories
+    if let Some(files) = &req.files {
+        for f in files {
+            let dir = Path::new(&skill_path).join(&f.subdir);
+            fs::create_dir_all(&dir)
+                .map_err(|e| format!("Failed to ensure dir '{}': {}", f.subdir, e))?;
+            let filepath = dir.join(&f.filename);
+            let content = f.content.as_deref().unwrap_or("");
+            fs::write(&filepath, content)
+                .map_err(|e| format!("Failed to create file '{}': {}", f.filename, e))?;
+        }
+    }
+
     Ok(SkillEntry {
         name: req.name.clone(),
         version: req.version,
         description: req.description,
-        path: format!("{}/{}", dir_str, req.name),
+        path: skill_path,
         enabled: true,
         tool_id: tool.id.clone(),
         format: skill_core::model::SkillFormat::SkillMdYaml,

@@ -69,6 +69,15 @@ pub struct CreateRequest {
     pub description: String,
     pub version: Option<String>,
     pub template: Option<TemplateType>,
+    pub subdirs: Option<Vec<String>>,
+    pub files: Option<Vec<SubdirFile>>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SubdirFile {
+    pub subdir: String,
+    pub filename: String,
+    pub content: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
