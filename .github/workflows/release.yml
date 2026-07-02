@@ -47,6 +47,14 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
+      - name: Install esbuild native (Linux)
+        if: matrix.platform == 'linux'
+        run: npm install @esbuild/linux-x64
+
+      - name: Install esbuild native (Windows)
+        if: matrix.platform == 'windows'
+        run: npm install @esbuild/win32-x64
+
       - name: Install Rollup native (Linux)
         if: matrix.platform == 'linux'
         run: npm install @rollup/rollup-linux-x64-gnu
