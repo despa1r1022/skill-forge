@@ -56,6 +56,14 @@ export interface CreateRequest {
   description: string;
   version?: string;
   template?: "Minimal" | "WithReferences" | "WithScripts";
+  subdirs?: string[];
+  files?: SubdirFile[];
+}
+
+export interface SubdirFile {
+  subdir: string;
+  filename: string;
+  content?: string;
 }
 
 export interface ToolDetection {

@@ -11,6 +11,7 @@ export function useSkills(toolId: string) {
     setLoading(true);
     try {
       const result = await api.listSkills(toolId);
+      console.log(`[useSkills] toolId=${toolId}, found ${result.length} skills:`, result.map(s => ({ name: s.name, path: s.path, enabled: s.enabled })));
       setSkills(result);
     } catch (err) {
       console.error("Failed to list skills:", err);

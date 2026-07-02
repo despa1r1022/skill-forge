@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useTools } from "../../hooks/useTools";
+import { useTools } from "../../hooks/useToolsContext";
 import { useSkills } from "../../hooks/useSkills";
 import { ToolSelector } from "./ToolSelector";
 import { SearchInput } from "../shared/SearchInput";

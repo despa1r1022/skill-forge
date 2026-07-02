@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+package-lock.json
 
 # Rust build artifacts
 target/
@@ -20,3 +21,6 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# Icon build artifacts
+src-tauri/icons/icon.iconset/

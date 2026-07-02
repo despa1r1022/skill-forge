@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   release:
     strategy:
@@ -27,9 +30,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Tauri CLI (via Cargo)
+        run: cargo install tauri-cli --version "^2"
 
       - name: Install Linux dependencies
         if: matrix.platform == 'linux'
@@ -38,15 +45,31 @@ jobs:
           sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
 
       - name: Install npm dependencies
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install
+        run: npm install
+
+      - name: Install esbuild native (Linux)
+        if: matrix.platform == 'linux'
+        run: npm install @esbuild/linux-x64
+
+      - name: Install esbuild native (Windows)
+        if: matrix.platform == 'windows'
+        run: npm install @esbuild/win32-x64
+
+      - name: Install Rollup native (Linux)
+        if: matrix.platform == 'linux'
+        run: npm install @rollup/rollup-linux-x64-gnu
+
+      - name: Install Rollup native (Windows)
+        if: matrix.platform == 'windows'
+        run: npm install @rollup/rollup-win32-x64-msvc
 
       - name: Build and release
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APPLE_SIGNING_IDENTITY: ${{ matrix.platform == 'macos' && '-' || '' }}
         with:
+          tauriScript: 'cargo tauri'
           tagName: ${{ github.ref_name }}
           releaseName: 'SkillForge ${{ github.ref_name }}'
           releaseBody: |
@@ -54,10 +77,20 @@ jobs:
 
             | 平台 | 安装包 | 说明 |
             |------|--------|------|
-            | **macOS** | `SkillForge_*_x64.dmg` | 双击安装，如提示不安全请到「系统设置 → 隐私与安全性」允许 |
-            | **Windows** | `SkillForge_*_x64.msi` | 双击安装，建议选 `.msi` |
-            | **Linux** | `SkillForge_*_amd64.deb` | Debian/Ubuntu: `sudo dpkg -i *.deb` |
-            | **Linux** | `SkillForge_*_amd64.AppImage` | 通用: `chmod +x *.AppImage && ./*.AppImage` |
+            | **macOS** | `SkillForge_*_aarch64.dmg` | 双击 `.dmg` → 拖拽到 Applications，如提示「已损坏」，执行下方命令 |
+            | **Windows** | `SkillForge_*_x64.msi` | 双击安装 |
+            | **Linux** | `SkillForge_*_amd64.deb` | `sudo dpkg -i SkillForge_*.deb` |
+            | **Linux** | `SkillForge_*_amd64.AppImage` | `chmod +x SkillForge_*.AppImage && ./*.AppImage` |
+
+            ### macOS 提示「已损坏」的解决方法
+
+            由于应用未经过 Apple 官方签名，首次打开会提示已损坏。请执行：
+
+            ```bash
+            sudo xattr -rd com.apple.quarantine /Applications/SkillForge.app
+            ```
+
+            然后重新打开应用即可。
 
             ## 更新内容
             请查看 [CHANGELOG.md](./CHANGELOG.md)
