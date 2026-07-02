@@ -21,3 +21,6 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# Icon build artifacts
+src-tauri/icons/icon.iconset/
